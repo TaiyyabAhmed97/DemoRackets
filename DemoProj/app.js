@@ -9,6 +9,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var Customer = require('./models/Customer');
+var Racket = require('./models/Racket');
+var CurrDemo = require('./models/CurrentDemo');
+
 var app = express();
 
 // view engine setup
