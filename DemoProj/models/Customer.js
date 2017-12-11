@@ -6,4 +6,5 @@ var CustomerSchema = new mongoose.Schema({
     PhoneNum: String,
     email: String,
 });
+
 mongoose.model('Customer', CustomerSchema);
