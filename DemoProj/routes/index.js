@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+//below is a test route
 router.get('/post', function(req, res, next){
   //test db working?
   var John = new Customer();
@@ -33,5 +34,7 @@ router.get('/post', function(req, res, next){
   trans.save();
   res.send(200);
 });
+//above is a test route
+
 
 module.exports = router;
