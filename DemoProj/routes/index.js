@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/*router.post('/post', function(req, res, next){
+router.get('/post', function(req, res, next){
   //test db working?
   var John = new Customer();
   John.firstname = 'John';
@@ -24,13 +24,14 @@ router.get('/', function(req, res, next) {
   Wil.make = 'Wilson';
   Wil.model = 'Pro Staff 97';
 
-  var trans = new CurrentDemo();
+  var trans = new CurrDemo();
   trans.Customer = John;
   trans.Rackets = [Wil];
 
   John.save();
   Wil.save();
   trans.save();
-});*/
+  res.send(200);
+});
 
 module.exports = router;

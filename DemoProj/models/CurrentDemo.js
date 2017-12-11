@@ -6,4 +6,4 @@ var CurrentDemoSchema = new mongoose.Schema({
     CheckedOut:{ type: Date, default: Date.now },
 });
 
-mongoose.model('CurrentDemo', CurrentDemoSchema);
+module.exports = mongoose.model('CurrDemo', CurrentDemoSchema);

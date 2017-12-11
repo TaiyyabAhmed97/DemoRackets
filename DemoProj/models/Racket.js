@@ -5,4 +5,4 @@ var RacketSchema = new mongoose.Schema({
     model: String
 });
 
-mongoose.model('Racket', RacketSchema);
+module.exports =mongoose.model('Racket', RacketSchema);

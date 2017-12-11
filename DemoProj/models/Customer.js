@@ -7,4 +7,4 @@ var CustomerSchema = new mongoose.Schema({
     email: String,
 });
 
-mongoose.model('Customer', CustomerSchema);
+module.exports = mongoose.model('Customer', CustomerSchema);
