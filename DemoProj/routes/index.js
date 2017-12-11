@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 //db dependencies
 var mongoose = require('mongoose');
-var Customer = mongoose.model('Customer');
-var Racket = mongoose.model('Racket');
-var CurrentDemo = mongoose.model('CurrentDemo');
+var Customer = require('../models/Customer');
+var Racket = require('../models/Racket');
+var CurrDemo = require('../models/CurrentDemo');
 
 
 /* GET home page. */

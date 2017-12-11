@@ -13,6 +13,9 @@ var Customer = require('./models/Customer');
 var Racket = require('./models/Racket');
 var CurrDemo = require('./models/CurrentDemo');
 
+var routes = require('./routes/index');
+var users = require('./routes/users');
+
 var app = express();
 
 // view engine setup
@@ -50,5 +53,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-//Nice coment bro
 // configured git
