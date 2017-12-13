@@ -31,7 +31,9 @@ router.get('/customers', function(req, res, next){
   });
 }); // GET all Customers
 
-router.post('/customer/', function(req, res, next){}); // POST a Customer
+router.post('/customer', function(req, res, next){
+  
+}); // POST a Customer
 
 router.put('/customer/:id', function(req, res, next){}); // PUT a customer (update name/num/email/phonenum)
 

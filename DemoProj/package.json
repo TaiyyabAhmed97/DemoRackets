@@ -14,5 +14,8 @@
     "mongoose": "^4.13.6",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.6.0"
   }
 }
