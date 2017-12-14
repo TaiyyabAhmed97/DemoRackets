@@ -1,12 +1,37 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>My Angular App!</title>
+    <title>Current Check-outs</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="/javascripts/angularApp.js"></script>
   </head>
-  <body ng-app="StringsAttached" ng-controller="MainCtrl">
-      <div ng-repeat="post in posts">
-          {{post}}
-      </div>
+  <body ng-app="StringsAttached" ng-controller="MainCtrl" text="#000000" bgcolor="#d7df21">
+  <table width="95%" align="center" class="begin_table" border="0" cellspacing="0" cellpadding="3">
+<tbody><tr><td bgcolor="grey">
+<table width="100%" align="center" bgcolor="white" border="0" cellspacing="0" cellpadding="6">
+<tbody><tr><td>
+<h1>Current Demos</h1>
+<table width="100%" align="center" class="begin_table_body" border="0" cellspacing="5" cellpadding="6">
+<tbody><tr><td>
+   <section id="demos">
+    <div ng-repeat="d in demos">
+		<h3>Customer</h3>
+		{{d.Customer.firstname}}
+		{{d.Customer.lastname}}
+		{{d.Customer.email}}
+		<br>
+		Check-out Date: {{d.CheckedOut}}
+		<br>
+		<h4>Rackets Checked-out</h4>
+		<ul>
+		<li ng-repeat="r in d.Rackets">
+		{{r}}
+		</li>
+		</ul>
+		<hr>
+	</div>
+	</section>
+</center>
+ </td></tr> </tbody></table> </td></tr></tbody></table> </td></tr></tbody></table>
   </body>
 </html>
