@@ -15,23 +15,25 @@
 <tbody><tr><td>
    <section id="demos">
     <div ng-repeat="d in demos">
-		<h3>Customer</h3>
-		{{d.Customer.firstname}}
+		
+		Customer name: {{d.Customer.firstname}}
 		{{d.Customer.lastname}}
-		{{d.Customer.email}}
 		<br>
-		Check-out Date: {{d.CheckedOut}}
+		Customer email:	{{d.Customer.email}}
 		<br>
+		Check-out date: {{d.CheckedOut | date:'MM/dd/yyyy'}}
+		<br>
+		Date due: {{d.ReturnDate | date: 'MM/dd/yyyy'}}
 		<h4>Rackets Checked-out</h4>
 		<ul>
 		<li ng-repeat="r in d.Rackets">
 		{{r}}
 		</li>
 		</ul>
+		Total number of rackets checked out: {{d.Rackets.length}}
 		<hr>
 	</div>
 	</section>
-</center>
  </td></tr> </tbody></table> </td></tr></tbody></table> </td></tr></tbody></table>
   </body>
 </html>
