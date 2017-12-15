@@ -9,7 +9,7 @@ var CurrDemo = require('../models/CurrentDemo');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('../src/index', { title: 'Express' });
 });
 
 //below is a test route
@@ -38,7 +38,9 @@ router.post('/customer', function(req, res, next){
 
 }); // POST a Customer
 
-router.put('/customer/:id', function(req, res, next){}); // PUT a customer (update name/num/email/phonenum)
+router.put('/customer/:id', function(req, res, next){
+  
+}); // PUT a customer (update name/num/email/phonenum)
 
 router.delete('/customer/:id', function(req, res, next){}); //DELETE a customer
 
