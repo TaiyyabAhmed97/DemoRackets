@@ -16,11 +16,14 @@ router.get('/', function(req, res, next) {
 router.get('/post', function(req, res, next){
   //test db working?
   var John = new Customer({firstname: 'John', lastname:'Bob', Phonenum:'9870345', email:'email@email.com'});
-
+  var Paul = new Customer({firstname: 'Paul', lastname: "sam", Phonenum: '1234567800', email:'me@email.com' });
   var trans = new CurrDemo({Customer:John, Rackets:["Wilson Pro Staff 97", "Babolat Pure Drive"]});
+  var trans1 = new CurrDemo({Customer: Paul, Rackets:["Yonex Vcoresv98", "Head phones"]});
 
   John.save();
+  Paul.save();
   trans.save();
+  trans1.save();
   res.send(200);
 });
 //above is a test route
@@ -32,7 +35,7 @@ router.get('/customers', function(req, res, next){
 }); // GET all Customers
 
 router.post('/customer', function(req, res, next){
-  
+
 }); // POST a Customer
 
 router.put('/customer/:id', function(req, res, next){}); // PUT a customer (update name/num/email/phonenum)
