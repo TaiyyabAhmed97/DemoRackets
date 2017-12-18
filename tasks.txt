@@ -1,0 +1,16 @@
+SERVER:
+    -Create Models
+    -Create API endpoints for
+        -Entering a New customer
+        -Updating/adding a customer's rackets
+        -deleting a customer
+        -updating cust info
+        -deleting a specific racket off demo list of a customer'specific
+ANGULAR:
+    -Create Components based off of features
+        -Navbar
+        -NewCustForm
+        -UpdateCustomerInfoForm
+        -UpdateSpecifcCustRacketsForm
+        -landingPage = list of 4-5 most recent transactions and their due dates.
+        
