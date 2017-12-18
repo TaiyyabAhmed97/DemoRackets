@@ -57,7 +57,10 @@ router.post('/demos', function(req, res, next){}); // POST a (transaction)
 
 router.put('/demos/:id', function(req, res, next){}); //PUT a transaction (update cust info or racket info or check out date)
 
-router.delete('/demos/:id', function(req, res, next){}); //DELETE a transaction ( for now, later we can move this to another table "Returned Demos")
+router.delete('/demos/:id', function(req, res, next){
+CurrDemo.remove(req.params.id, callback);
+
+}); //DELETE a transaction ( for now, later we can move this to another table "Returned Demos")
 
 
 
