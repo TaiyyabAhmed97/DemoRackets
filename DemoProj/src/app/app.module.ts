@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { TestCompComponent } from './test-comp/test-comp.component';
+import { TestCompComponent } from './components/test-component/test-comp.component';
 
 
 @NgModule({
