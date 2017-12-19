@@ -5,14 +5,10 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var Customer = require('../models/Customer');
 var CurrDemo = require('../models/CurrentDemo');
-
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('../src/index', { title: 'Express' });
-});
-
 //below is a test route
+router.get('/', function(req, res, next){
+  res.json("Hi");
+});
 router.get('/post', function(req, res, next){
   //test db working?
   var John = new Customer({firstname: 'John', lastname:'Bob', Phonenum:'9870345', email:'email@email.com'});
@@ -27,14 +23,25 @@ router.get('/post', function(req, res, next){
   res.send(200);
 });
 //above is a test route
+router.get('/nopost',function(req, res, next){
+  console.log("here");
+  Customer.find({}).remove().exec();
+  CurrDemo.find({}).remove().exec();
+  res.json('works');
 
+});
 router.get('/customers', function(req, res, next){
+  console.log("not here");
   Customer.find({}).exec(function(err, ret){
     res.json(ret);
   });
 }); // GET all Customers
 
 router.post('/customer', function(req, res, next){
+let fname = req.body.fname;
+let lname = req.body.lname;
+let email = req.body.email;
+let phonenum = req.body.phonenum;
 
 }); // POST a Customer
 

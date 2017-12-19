@@ -8,7 +8,7 @@ SERVER:
         -deleting a specific racket off demo list of a customer'specific
 ANGULAR:
     -Create Components based off of features
-        -Navbar
+        -Navbar (Search, (need to add moe things))
         -NewCustForm
         -UpdateCustomerInfoForm
         -UpdateSpecifcCustRacketsForm
