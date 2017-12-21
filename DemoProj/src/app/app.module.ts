@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BackendModule } from './backend/backend.module';
 
 
 import { AppComponent } from './app.component';
-import { TestcompComponent } from './testcomp/testcomp.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestcompComponent, // tslint:disable:one-line
+    AppComponent
+    // tslint:disable:one-line
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, BackendModule
   ],
   bootstrap: [AppComponent]
 })
