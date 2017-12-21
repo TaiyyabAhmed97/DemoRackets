@@ -47,8 +47,12 @@ temp.save();
 res.send(200);
 }); // POST a Customer
 
-router.put('/customer/:id', function(req, res, next){
-  
+router.get('/customer/:phonenum', function(req, res, next){
+  Customer.find({'PhoneNum': req.params.phonenum})
+    .exec(function(err, ret)
+  {
+    res.json(ret);
+  });
 }); // PUT a customer (update name/num/email/phonenum)
 
 router.delete('/customer/:id', function(req, res, next){}); //DELETE a customer
@@ -62,7 +66,18 @@ router.get('/demos', function(req, res, next){
   });
 }); //GET all current demo-ed out rackets
 
-router.post('/demos', function(req, res, next){}); // POST a (transaction)
+router.post('/demos', function(req, res, next){
+  
+  let cust1 = Customer.find({'PhoneNum': req.body.Customer.PhoneNum})
+    .exec(function(err, ret){
+      return ret;
+    });
+  let arr = JSON.parse(JSON.stringify(req.body.Rackets));
+  let date = req.body.CheckedOut;
+  let temp = new CurrDemo({Customer:cust1, CheckedOut: date, Rackets: arr});
+  temp.save();
+  
+}); // POST a (transaction)
 
 router.put('/demos/:id', function(req, res, next){}); //PUT a transaction (update cust info or racket info or check out date)
 

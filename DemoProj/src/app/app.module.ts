@@ -3,18 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { TestCompComponent } from './components/test-component/test-comp.component';
-
+import { TestcompComponent } from './testcomp/testcomp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestCompComponent
+    TestcompComponent, // tslint:disable:one-line
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
