@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BackendModule } from './backend/backend.module';
-
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +9,7 @@ import { AppComponent } from './app.component';
     // tslint:disable:one-line
   ],
   imports: [
-    BrowserModule, BackendModule
+    BrowserModule
   ],
   bootstrap: [AppComponent]
 })
