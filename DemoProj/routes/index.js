@@ -7,6 +7,17 @@ var Customer = require('../models/Customer');
 var CurrDemo = require('../models/CurrentDemo');
 //below is a test route
 router.get('/', function(req, res, next){
+  var twilio = require('twilio');
+var accountSid = 'ACf9a2ec804067f8911a51bd9f5188ecf7';
+var authToken = "29204ba14d0d999ea6390f5b65dbe9b7";
+
+var client = new twilio(accountSid, authToken);
+client.messages.create({
+	body: 'Hello from Node',
+	to: '+17737128894',
+	from: '+12242493721'
+})
+.then((message) => console.log(message.sid));
   res.json("Hi");
 });
 router.get('/post', function(req, res, next){

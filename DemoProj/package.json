@@ -28,6 +28,7 @@
     "nodemon": "^1.13.2",
     "rxjs": "^5.5.2",
     "serve-favicon": "^2.4.5",
+    "twilio": "^3.11.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
