@@ -1,5 +1,7 @@
 import {Customer} from './customer';
 export class Currdemo {
-    Customer: Customer;
-    rackets: string [];
+    constructor(
+    customer: Customer,
+    rackets: string []
+    ){}
 }
