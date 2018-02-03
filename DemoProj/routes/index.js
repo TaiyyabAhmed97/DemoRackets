@@ -13,19 +13,7 @@ router.get('/', function(req, res, next){
 
   res.json("Hi");
 });
-router.get('/post', function(req, res, next){
-  //test db working?
-  var John = new Customer({firstname: 'John', lastname:'Bob', PhoneNum:'9870345', email:'email@email.com'});
-  var Paul = new Customer({firstname: 'Paul', lastname: "sam", PhoneNum: '1234567800', email:'me@email.com' });
-  var trans = new CurrDemo({Customer:John, Rackets:["Wilson Pro Staff 97", "Babolat Pure Drive"]});
-  var trans1 = new CurrDemo({Customer: Paul, Rackets:["Yonex Vcoresv98", "Head phones"]});
 
-  John.save();
-  Paul.save();
-  trans.save();
-  trans1.save();
-  res.send(200);
-});
 //above is a test route
 router.get('/nopost',function(req, res, next){
   console.log("here");
@@ -34,6 +22,15 @@ router.get('/nopost',function(req, res, next){
   res.json('works');
 
 });
+
+router.delete('/:id', function(req, res, next){
+  Customer.findByIdAndRemove(req.params.id, req.body, function(err, post){
+    if(err) return next(err);
+    res.json(post);
+
+  });
+});
+
 router.get('/customers', function(req, res, next){
   console.log("not here");
   Customer.find({}).exec(function(err, ret){
@@ -42,20 +39,17 @@ router.get('/customers', function(req, res, next){
 }); // GET all Customers
 
 router.post('/something', function(req, res, next){
-let fname = req.body.fname;
-let lname = req.body.lname;
-let email = req.body.email;
-let phonenum = req.body.phonenum;
-var temp = new Customer({firstname:fname, lastname:lname, PhoneNum:phonenum, email:email});
-temp.save();
+Customer.create(req.body, function (err, post){
+  if (err) return next(err);
+    res.json(post);
+});
 var client = new twilio(accountSid, authToken);
   client.messages.create({
-	body: 'Hello '+req.body.fname+'We hope you have fun with your new racket',
+	body: 'Hello '+req.body.firstname+'We hope you have fun with your new racket',
 	to: '+17737128894',
 	from: '+12242493721'
 })
 .then((message) => console.log(message.sid));
-res.send(200);
 }); // POST a Customer
 
 router.get('/customer/:phonenum', function(req, res, next){
