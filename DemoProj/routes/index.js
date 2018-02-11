@@ -4,12 +4,37 @@ var twilio = require('twilio');
 var accountSid = 'ACf9a2ec804067f8911a51bd9f5188ecf7';
 var authToken = "29204ba14d0d999ea6390f5b65dbe9b7";
 //db dependencies
+var moment = require('moment');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 var Customer = require('../models/Customer');
 var CurrDemo = require('../models/CurrentDemo');
 //below is a test route
 
+
+
+
+
+/* DEMOS ROUTES */
+router.get('/d', function(req, res, next) {
+  CurrDemo.find(function (err, products) {
+    if (err) return next(err);
+    res.json(products);
+  });
+});
+
+router.get('/d:id', function(req, res, next) {
+  CurrDemo.findById(req.params.id, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+router.post('/d', function(req, res, next) {
+      var cust =  Customer.findById(req.custId);
+      //var demo = CurrDemo{}
+     // CurrDemo. 
+});
 
 
 
@@ -60,7 +85,8 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
-module.exports = router;
+
+
 
 
 
