@@ -32,8 +32,8 @@ router.get('/d:id', function(req, res, next) {
 
 router.post('/d', function(req, res, next) {
       var cust =  Customer.findById(req.custId);
-      //var demo = CurrDemo{}
-     // CurrDemo. 
+      var demo = CurrDemo({Customer: cust, Rackets: req.body.Rackets, Checkout: moment(), ReturnDate: moment().add(req.body.days, "days")});
+      res.json(200);
 });
 
 
