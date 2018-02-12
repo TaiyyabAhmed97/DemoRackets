@@ -16,6 +16,8 @@ var CurrDemo = require('../models/CurrentDemo');
 
 
 /* DEMOS ROUTES */
+
+// GET ALL CURRENT DEMOS
 router.get('/d', function(req, res, next) {
   CurrDemo.find(function (err, products) {
     if (err) return next(err);
@@ -23,6 +25,7 @@ router.get('/d', function(req, res, next) {
   });
 });
 
+// GET A SPECIFIC TRANSACTION BY ID
 router.get('/d:id', function(req, res, next) {
   CurrDemo.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -30,13 +33,21 @@ router.get('/d:id', function(req, res, next) {
   });
 });
 
+// POST A TRANSACTION
 router.post('/d', function(req, res, next) {
-      var cust =  Customer.findById(req.custId);
-      var demo = CurrDemo({Customer: cust, Rackets: req.body.Rackets, Checkout: moment(), ReturnDate: moment().add(req.body.days, "days")});
-      res.json(200);
+      CurrDemo.create(req.body, function(err, post){
+        if (err) return next(err);
+        res.json(post);
+      });
 });
 
-
+// UPDATE A TRANSACTION
+router.put('/:id', function(req, res, next) {
+  CurrDemo.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 /* GET ALL CustomerS */
 router.get('/', function(req, res, next) {
