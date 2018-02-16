@@ -69,7 +69,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var client = new twilio(accountSid, authToken);
   client.messages.create({
-	body: 'Hello '+req.body.firstname+'We hope you have fun with your new racket',
+	body: 'Hello '+req.body.firstname+' We hope you have fun with your new racket',
 	to: '+1'+req.body.PhoneNum,
 	from: '+12242493721'
 })
