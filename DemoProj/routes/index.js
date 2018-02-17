@@ -35,10 +35,10 @@ router.get('/d:id', function(req, res, next) {
 
 // POST A TRANSACTION
 router.post('/d', function(req, res, next) {
-      CurrDemo.create(req.body, function(err, post){
-        if (err) return next(err);
-        res.json(post);
-      });
+      //CurrDemo.create(req.body, function(err, post){
+       // if (err) return next(err);
+        //res.json(post);
+      //});
 });
 
 // UPDATE A TRANSACTION
