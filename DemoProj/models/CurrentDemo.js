@@ -1,10 +1,12 @@
+
+
 var mongoose = require('mongoose');
+var moment = require('moment');
 
 var CurrentDemoSchema = new mongoose.Schema({
-    Customer:{ type: mongoose.Schema.Types.ObjectId, ref: 'Customer' },
     Rackets:  [String],
-    CheckedOut:{ type: Date, default: Date.now },
-    ReturnDate: Date
+    CheckedOut: String,
+    ReturnDate: String
 });
 
-module.exports = mongoose.model('CurrDemo', CurrentDemoSchema);
+module.exports = mongoose.model('CurrentDemo', CurrentDemoSchema);
