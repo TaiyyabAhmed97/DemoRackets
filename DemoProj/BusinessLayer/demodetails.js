@@ -99,6 +99,8 @@ module.exports = {
   getCustomerById: function (id) {
     return new Promise(function (resolve, reject) {
       Customer.findById(id, function (err, post) {
+        console.log(post);
+        console.log("in");
         if (err) reject(err);
         resolve(post);
       });
@@ -120,6 +122,14 @@ module.exports = {
       Customer.findByIdAndRemove(id, demo, function (err, post) {
         if (err) reject(err);
         resolve(post);
+      });
+    });
+  },
+  removeAllCustomers: function () {
+    return new Promise(function (resolve, reject) {
+      Customer.remove({}, function (err, docs) {
+        if (err) reject(err);
+        resolve(docs);
       });
     });
   },

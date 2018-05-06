@@ -71,7 +71,7 @@ router.get('/:id', function (req, res, next) {
   });
 });
 
-router.get('/id:id', function (req, res, next) {
+router.get('/c/:id', function (req, res, next) {
   logic.getCustomerById(req.params.id).then(function (response) {
     res.json(response);
   });
@@ -93,6 +93,11 @@ router.put('/:id', function (req, res, next) {
 
 router.delete('/:id', function (req, res, next) {
   logic.removeCustomerbyId(req.params.id, req.body).then(function (result) {
+    res.json(result);
+  });
+});
+router.delete('/', function (req, res, next) {
+  logic.removeAllCustomers().then(function (result) {
     res.json(result);
   });
 });
