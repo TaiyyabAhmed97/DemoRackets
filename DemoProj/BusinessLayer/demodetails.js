@@ -24,7 +24,6 @@ module.exports = {
   submitDemo: function (demo) {
     return new Promise(function (resolve, reject) {
       CurrentDemo.create(demo, function (err, post) {
-
         if (err) reject(err);
         resolve(post);
       });

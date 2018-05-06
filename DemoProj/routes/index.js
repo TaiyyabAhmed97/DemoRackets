@@ -5,21 +5,21 @@ var logic = require('../BusinessLayer/demodetails.js');
 /* DEMOS ROUTES */
 
 // GET ALL CURRENT DEMOS
-router.get('/d', function (req, res, next) {
+router.get('/rent', function (req, res, next) {
   logic.getDemos().then(function (result) {
     res.json(result);
   });
 });
 
 // GET A SPECIFIC TRANSACTION BY ID
-router.get('/d/:id', function (req, res, next) {
+router.get('/rent:id', function (req, res, next) {
   logic.getDemoById(req.params.id).then(function (result) {
     res.json(result);
   });
 });
 
 // POST A TRANSACTION
-router.post('/d', function (req, res, next) {
+router.post('/rent', function (req, res, next) {
   logic.submitDemo(req.body).then(function (response) {
     res.json(response);
   });
@@ -32,7 +32,7 @@ router.put('/d/:id', function (req, res, next) {
   });
 });
 
-router.delete('/d/:id', function (req, res, next) {
+router.delete('/rent:id', function (req, res, next) {
   logic.removeDemobyId(req.params.id, req.body).then(function (result) {
     res.json(result);
   });
