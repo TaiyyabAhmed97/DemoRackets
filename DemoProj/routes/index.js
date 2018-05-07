@@ -2,12 +2,22 @@ var express = require('express');
 var router = express.Router();
 const http = require('http');
 var logic = require('../BusinessLayer/demodetails.js');
+
 /* DEMOS ROUTES */
 
 // GET ALL CURRENT DEMOS
+
+
 router.get('/rent', function (req, res, next) {
   logic.getDemos().then(function (result) {
     res.json(result);
+  });
+});
+
+router.get('/rent/modified', function (req, res, next) {
+  logic.wrapperFunc().then(function (result) {
+    let arr = result;
+    res.json(arr);
   });
 });
 
@@ -34,6 +44,12 @@ router.put('/d/:id', function (req, res, next) {
 
 router.delete('/rent:id', function (req, res, next) {
   logic.removeDemobyId(req.params.id, req.body).then(function (result) {
+    res.json(result);
+  });
+});
+
+router.delete('/rent', function (req, res, next) {
+  logic.removeAllDemos().then(function (result) {
     res.json(result);
   });
 });

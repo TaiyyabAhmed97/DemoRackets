@@ -20,6 +20,23 @@ module.exports = {
       });
     });
   },
+  wrapperFunc: async function () {
+    let result = await this.getDemos();
+    //console.log(result);
+    var arr = [];
+    var customer = {};
+    for (var i = 0; i < result.length; i++) {
+      let cust = await this.getCustomerById(result[i].CustomerId);
+      customer['Customer'] = cust;
+      customer['Rackets'] = result[i].Rackets;
+      customer['CheckedOut'] = result[i].CheckedOut;
+      customer['ReturnDate'] = result[i].ReturnDate;
+      // console.log(customer);
+      arr.push(customer);
+    }
+    //console.log(arr);
+    return arr;
+  },
   //random comment
   submitDemo: function (demo) {
     return new Promise(function (resolve, reject) {
@@ -57,6 +74,16 @@ module.exports = {
       });
     });
   },
+
+  removeAllDemos: function () {
+    return new Promise(function (resolve, reject) {
+      CurrentDemo.remove({}, function (err, docs) {
+        if (err) reject(err);
+        resolve(docs);
+      });
+    })
+  },
+
 
 
 
@@ -98,8 +125,6 @@ module.exports = {
   getCustomerById: function (id) {
     return new Promise(function (resolve, reject) {
       Customer.findById(id, function (err, post) {
-        console.log(post);
-        console.log("in");
         if (err) reject(err);
         resolve(post);
       });
