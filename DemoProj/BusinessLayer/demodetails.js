@@ -20,21 +20,28 @@ module.exports = {
       });
     });
   },
+
   wrapperFunc: async function () {
     let result = await this.getDemos();
     //console.log(result);
     var arr = [];
-    var customer = {};
+
     for (var i = 0; i < result.length; i++) {
+      var customer = {};
       let cust = await this.getCustomerById(result[i].CustomerId);
-      customer['Customer'] = cust;
+      customer['custid'] = cust._id;
+      customer['firstname'] = cust.firstname;
+      customer['lastname'] = cust.lastname;
+      customer['PhoneNum'] = cust.PhoneNum;
+      customer['email'] = cust.email;
+      customer['demoid'] = result[i]._id;
       customer['Rackets'] = result[i].Rackets;
       customer['CheckedOut'] = result[i].CheckedOut;
       customer['ReturnDate'] = result[i].ReturnDate;
-      // console.log(customer);
+      //console.log(customer);
       arr.push(customer);
     }
-    //console.log(arr);
+    console.log(arr);
     return arr;
   },
   //random comment
