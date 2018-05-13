@@ -27,23 +27,41 @@ module.exports = {
     var arr = [];
 
     for (var i = 0; i < result.length; i++) {
-      var customer = {};
-      let cust = await this.getCustomerById(result[i].CustomerId);
-      customer['custid'] = cust._id;
-      customer['firstname'] = cust.firstname;
-      customer['lastname'] = cust.lastname;
-      customer['PhoneNum'] = cust.PhoneNum;
-      customer['email'] = cust.email;
-      customer['demoid'] = result[i]._id;
-      customer['Rackets'] = result[i].Rackets;
-      customer['CheckedOut'] = result[i].CheckedOut;
-      customer['ReturnDate'] = result[i].ReturnDate;
-      //console.log(customer);
-      arr.push(customer);
+      var demoDetails = await this.populateDemoDetails(result[i]);
+      console.log(demoDetails);
+      arr.push(demoDetails);
     }
     console.log(arr);
     return arr;
   },
+
+  getDemoDetailsById: async function (demoId) {
+    let demo = await this.getDemoById(demoId);
+    return this.populateDemoDetails(demo);
+  },
+
+  populateDemoDetails: async function (demo) {
+
+    // console.log(demo);
+    var customer = {};
+    let cust = await this.getCustomerById(demo.CustomerId);
+    // console.log(cust);
+
+    customer['custid'] = cust._id;
+    customer['firstname'] = cust.firstname;
+    customer['lastname'] = cust.lastname;
+    customer['PhoneNum'] = cust.PhoneNum;
+    customer['email'] = cust.email;
+    customer['demoid'] = demo._id;
+    customer['Rackets'] = demo.Rackets;
+    customer['CheckedOut'] = demo.CheckedOut;
+    customer['ReturnDate'] = demo.ReturnDate;
+
+    // console.log(customer);
+    return customer;
+
+  },
+
   //random comment
   submitDemo: function (demo) {
     return new Promise(function (resolve, reject) {
