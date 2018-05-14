@@ -20,6 +20,12 @@ router.get('/rent/modified', function (req, res, next) {
     res.json(arr);
   });
 });
+router.get('/rent/modified/:id', function (req, res, next) {
+  logic.getDemoDetailsById(req.params.id).then(function (result) {
+    console.log("here");
+    res.json(result);
+  });
+});
 
 // GET A SPECIFIC TRANSACTION BY ID
 router.get('/rent:id', function (req, res, next) {
