@@ -19,7 +19,10 @@ var users = require('./routes/users');
 var app = express();
 // view engine setup
 //app.use(express.static(__dirname + '/src'));
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://tahmd5:ibrahim1125@cluster0-shard-00-00-vpsvb.mongodb.net:27017,cluster0-shard-00-01-vpsvb.mongodb.net:27017,cluster0-shard-00-02-vpsvb.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', {
+  useMongoClient: true,
+  /* other options */
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -33,14 +36,14 @@ app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
 
   res.locals.message = err.message;

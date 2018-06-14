@@ -2,7 +2,10 @@
 
 //db dependencies
 var mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://<taiyyab.a97@gmail.com>:<Cps50039870!>@cluster0-vpsvb.mongodb.net/test?retryWrites=true');
+mongoose.connect('mongodb://tahmd5:ibrahim1125@cluster0-shard-00-00-vpsvb.mongodb.net:27017,cluster0-shard-00-01-vpsvb.mongodb.net:27017,cluster0-shard-00-02-vpsvb.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', {
+  useMongoClient: true,
+  /* other options */
+});
 var Customer = require('../models/Customer');
 var CurrentDemo = require('../models/CurrentDemo');
 
