@@ -93,7 +93,7 @@ router.delete('/rent', function (req, res, next) {
 
 
 /* GET ALL CustomerS */
-router.get('/', function (req, res, next) {
+router.get('/all', function (req, res, next) {
   logic.getCustomers().then(function (result) {
     res.json(result);
   });
