@@ -3,23 +3,17 @@ var router = express.Router();
 const http = require('http');
 var logic = require('../BusinessLayer/demodetails.js');
 
-var accountSid = 'ACf9a2ec804067f8911a51bd9f5188ecf7';
-var authToken = "29204ba14d0d999ea6390f5b65dbe9b7";
-var client = require('twilio')(accountSid, authToken);
+
 
 /* DEMOS ROUTES */
 
 // GET ALL CURRENT DEMOS
 router.post('/text', function (req, res, next) {
-  client.messages
-    .create({
-      body: req.body.message,
-      from: '+12244791075',
-      to: req.body.phonenum
-    })
-    .then(message => console.log(message.sid))
-    .done();
-})
+  logic.textCustomer(req.body).then(function (result) {
+    console.log("hereer");
+    res.json(result);
+  });
+});
 
 router.get('/rent', function (req, res, next) {
   logic.getDemos().then(function (result) {

@@ -8,6 +8,9 @@ mongoose.connect('mongodb://tahmd5:ibrahim1125@cluster0-shard-00-00-vpsvb.mongod
 });
 var Customer = require('../models/Customer');
 var CurrentDemo = require('../models/CurrentDemo');
+var accountSid = 'ACf9a2ec804067f8911a51bd9f5188ecf7';
+var authToken = "29204ba14d0d999ea6390f5b65dbe9b7";
+var client = require('twilio')(accountSid, authToken);
 
 
 
@@ -19,6 +22,20 @@ module.exports = {
   getFinishedDemos: function () {
 
 
+  },
+  textCustomer: function (message) {
+    console.log("hrerere");
+    return new Promise(function (resolve, reject) {
+      client.messages
+        .create({
+          body: message.message,
+          from: '+12244791075',
+          to: '+1' + message.phonenum
+        })
+        .then(resolve(message))
+        .done();
+
+    })
   },
   getDemos: function () {
     return new Promise(function (resolve, reject) {
