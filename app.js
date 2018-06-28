@@ -66,8 +66,11 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
+var securityOptions = {
+  key: 'AIzaSyD5NUOljGYqZfa58jg5CJYZqAm9H6ksFB0'
+};
 
-var server = http.createServer(app);
+var server = http.createServer(securityOptions, app);
 
 /**
  * Listen on provided port, on all network interfaces.
