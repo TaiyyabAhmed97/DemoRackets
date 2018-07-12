@@ -21,6 +21,13 @@ router.get('/rent', function (req, res, next) {
   });
 });
 
+router.get('/history/:id', function (req, res, next) {
+  logic.getCustHist(req.params.id).then(function (result) {
+    console.log('hist');
+    res.json(result);
+  });
+});
+
 router.get('/rent/modified', function (req, res, next) {
   logic.wrapperFunc().then(function (result) {
     let arr = result;
@@ -68,24 +75,6 @@ router.delete('/rent', function (req, res, next) {
 });
 
 
-// GET A SPECIFIC TRANSACTION BY ID
-
-
-// POST A TRANSACTION
-
-
-// UPDATE A TRANSACTION
-
-
-
-
-
-
-
-
-
-
-
 /* GET ALL CustomerS */
 router.get('/all', function (req, res, next) {
   logic.getCustomers().then(function (result) {
@@ -93,43 +82,41 @@ router.get('/all', function (req, res, next) {
   });
 });
 
-// GET A SPECIFIC TRANSACTION BY ID
+// GET A SPECIFIC CUSTOMER BY PHONE#
 router.get('/:id', function (req, res, next) {
   logic.getCustomerByPhone(req.params.id).then(function (response) {
     res.json(response);
   });
 });
 
+// GET A SPECIFIC CUSTOMER BY ID
 router.get('/c/:id', function (req, res, next) {
   logic.getCustomerById(req.params.id).then(function (response) {
     res.json(response);
   });
 });
 
-// POST A TRANSACTION
+// POST A CUSTOMER 
 router.post('/', function (req, res, next) {
   logic.submitCustomer(req.body).then(function (response) {
     res.json(response);
   });
 });
 
-// UPDATE A TRANSACTION
+// UPDATE A CUSTOMERS INFO
 router.put('/:id', function (req, res, next) {
   logic.updateCustomerbyId(req.params.id, req.body).then(function (result) {
     res.json(result);
   });
 });
 
+// DELETE A SPECIFIC CUSTOMER BY ID
 router.delete('/:id', function (req, res, next) {
   logic.removeCustomerbyId(req.params.id).then(function (result) {
     res.json(result);
   });
 });
-router.delete('/', function (req, res, next) {
-  logic.removeAllCustomers().then(function (result) {
-    res.json(result);
-  });
-});
+
 
 
 

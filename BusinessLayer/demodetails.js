@@ -64,6 +64,23 @@ module.exports = {
     return arr;
   },
 
+  getCustHist: async function (custid) {
+    let result = await this.getDemos();
+    //console.log(result);
+    var arr = [];
+
+    for (var i = 0; i < result.length; i++) {
+      var demoDetails = await this.populateDemoDetails(result[i]);
+      if (demoDetails.custid == custid) {
+        arr.push(demoDetails);
+      }
+      console.log(demoDetails);
+
+    }
+    console.log(arr);
+    return arr;
+  },
+
   getDemoDetailsById: async function (demoId) {
     let demo = await this.getDemoById(demoId);
     return this.populateDemoDetails(demo);
