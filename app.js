@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var cors = require('cors');
 var mysql = require('mysql');
 
 var Customer = require('./models/Customer');
@@ -26,6 +26,7 @@ mongoose.connect('mongodb://tahmd5:ibrahim1125@cluster0-shard-00-00-vpsvb.mongod
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -66,11 +67,9 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-var securityOptions = {
-  key: 'AIzaSyD5NUOljGYqZfa58jg5CJYZqAm9H6ksFB0'
-};
 
-var server = http.createServer(securityOptions, app);
+
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
