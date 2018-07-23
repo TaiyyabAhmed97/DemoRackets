@@ -37,11 +37,21 @@ app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
+
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -75,7 +85,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen("https://3000-dot-4031203-dot-devshell.appspot.com");
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
