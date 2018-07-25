@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const http = require('http');
 var logic = require('../BusinessLayer/demodetails.js');
-var cors = require('cors');
+//var cors = require('cors');
 
 
 /* DEMOS ROUTES */
